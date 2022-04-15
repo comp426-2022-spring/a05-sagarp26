@@ -8,6 +8,7 @@ const fs = require('fs')
 const coin = require('./src/controllers/mycontroller.js')
 const logdb = require('./src/services//database.js')
 
+app.use(express.static('./public'))
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
