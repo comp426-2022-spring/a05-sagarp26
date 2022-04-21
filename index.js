@@ -6,7 +6,8 @@ const morgan = require('morgan')
 const fs = require('fs')
 
 const coin = require('./src/controllers/mycontroller.js')
-const logdb = require('./src/services//database.js')
+const logdb = require('./src/services/database.js')
+const logging = require('./src/middleware/mymiddleware.js')
 
 app.use(express.static('./public'))
 app.use(express.urlencoded({ extended: true}));
@@ -44,6 +45,8 @@ if(args.log != 'false') {
 }
 
 app.use((req, res, next) => {
+  logging.app.use(req, res, next)
+  /*
     let logdata = {
       remoteaddr: req.ip,
       remoteuser: req.user,
@@ -61,6 +64,7 @@ app.use((req, res, next) => {
     const info = stmt.run(logdata.remoteaddr, logdata.remoteuser, logdata.time, logdata.method, logdata.url, logdata.protocol, logdata.httpversion, logdata.status, logdata.referer, logdata.useragent)
     
     next()
+    */
 })
 
 if(args.debug) {
