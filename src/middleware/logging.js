@@ -18,4 +18,4 @@ function log(req, res, next) {
     next();
 }
 
-export { log }
+modules.export = { log }

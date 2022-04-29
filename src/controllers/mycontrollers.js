@@ -46,4 +46,4 @@ function coinFlip() {
     return message;
   }
 
-  export { coinFlip, coinFlips, countFlips, flipACoin };
+  modules.export = { coinFlip, coinFlips, countFlips, flipACoin };

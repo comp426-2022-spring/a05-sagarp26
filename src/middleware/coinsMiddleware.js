@@ -33,4 +33,4 @@ function guess(req, res) {
     res.status(200).json(flipACoin(req.body.guess))
 }
 
-export { check, flip, flipsGet, flips, guessGet, guess }
+modules.export = { check, flip, flipsGet, flips, guessGet, guess }

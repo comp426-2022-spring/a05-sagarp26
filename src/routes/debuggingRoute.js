@@ -7,4 +7,4 @@ debugRouter.get("/app/log/access", log)
 
 debugRouter.get("/app/error", error);
 
-export default debugRouter
+modules.export = debugRouter

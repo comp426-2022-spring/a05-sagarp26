@@ -27,4 +27,4 @@ coinRouter.get('/app/flip/call/:guess(heads|tails)/', guessGet)
 // Guess flip POST endpoint
 coinRouter.post('/app/flip/call/', guess);
 
-export default coinRouter
+modules.export = coinRouter

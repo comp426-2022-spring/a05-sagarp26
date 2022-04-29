@@ -13,4 +13,4 @@ function error(req, res) {
     throw new Error('Error Test Successful');
 }
 
-export { log, error}
+modules.export = { log, error}

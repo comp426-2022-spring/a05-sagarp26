@@ -11,4 +11,4 @@ if(row === undefined) {
     logdb.exec(sqlInit)
 }
 
-export default db
+modules.export = db
