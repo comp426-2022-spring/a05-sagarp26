@@ -45,3 +45,5 @@ function coinFlip() {
     const message = {"call":c, "flip":f, "result":r};
     return message;
   }
+
+  export { coinFlip, coinFlips, countFlips, flipACoin };
