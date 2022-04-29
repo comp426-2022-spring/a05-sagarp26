@@ -1,4 +1,4 @@
-import db from '../services/database.js'
+const db = require('../services/database.js')
 
 function log(req, res, next) {
     let logData = {
@@ -17,5 +17,3 @@ function log(req, res, next) {
     const info = stmt.run(logData.remoteaddr, logData.remoteuser, logData.time, logData.method, logData.url, logData.protocol, logData.httpversion, logData.status, logData.referer, logData.useragent);
     next();
 }
-
-modules.export = { log }

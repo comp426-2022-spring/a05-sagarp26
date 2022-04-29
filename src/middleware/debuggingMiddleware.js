@@ -1,4 +1,4 @@
-import db from '../services/database.js'
+const db = require('../services/database.js')
 
 function log(req, res) {
     try{
@@ -12,5 +12,3 @@ function log(req, res) {
 function error(req, res) {
     throw new Error('Error Test Successful');
 }
-
-modules.export = { log, error}

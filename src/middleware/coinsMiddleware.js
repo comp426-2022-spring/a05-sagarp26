@@ -1,4 +1,4 @@
-import { coinFlip, coinFlips, countFlips, flipACoin } from '../controllers/coin.mjs'
+const coin = require('../controllers/mycontrollers.js')
 
 // check middleware
 function check(req, res) {
@@ -8,29 +8,27 @@ function check(req, res) {
 
 // flip one coin 
 function flip(req, res) {
-    res.status(200).json({ "flip" : coinFlip() })
+    res.status(200).json({ "flip" : coin.coinFlip() })
 }
 
 // flip many coins Get
 function flipsGet(req, res) {
-    const flips = coinFlips(req.params.number)
+    const flips = coin.coinFlips(req.params.number)
     res.status(200).json({"raw":flips,"summary":countFlips(flips)})
 }
 
 // flip many coins POST
 function flips(req, res) {
-    const flips = coinFlips(req.body.number)
+    const flips = coin.coinFlips(req.body.number)
     res.status(200).json({"raw":flips,"summary":countFlips(flips)})
 }
 
 // guess flip GET
 function guessGet(req, res) {
-    res.status(200).json(flipACoin(req.params.guess))
+    res.status(200).json(coin.flipACoin(req.params.guess))
 }
 
 // guess flip POST
 function guess(req, res) {
-    res.status(200).json(flipACoin(req.body.guess))
+    res.status(200).json(coin.flipACoin(req.body.guess))
 }
-
-modules.export = { check, flip, flipsGet, flips, guessGet, guess }

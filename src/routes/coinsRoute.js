@@ -1,30 +1,21 @@
 // Route (endpoint) definitions go in this directory
-// imports coin middleware
-import { check, flip, flipsGet, flips, guessGet, guess } from '../middleware/coinMiddleware.js'
+const express = require('express')
+const coinsMiddleware = require('../middleware/coinMiddleware.js')
 
-// Imports express and creates router object
-import express from 'express'
-const coinRouter = express.Router()
+const coinsRoute = express.Router()
 
-// Check /app/ endpoint
-coinRouter.get('/app/', check);
+coinRouter.get('/app/', coinsMiddleware.check(req, res));
 
-// Flip 1 coin endpoint
-coinRouter.get('/app/flip/', flip);
+coinRouter.get('/app/flip/', coinsMiddleware.flips(req, res));
 
-// Flip 1 coin endpoint
-coinRouter.get('/app/flip/coin/', flip);
+coinRouter.get('/app/flip/coin/', coinsMiddleware.flip(req, res));
 
-// Flip many coins GET endpoint
-coinRouter.get('/app/flips/:number', flipsGet)
+coinRouter.get('/app/flips/:number', coinsMiddleware.flipsGet(req, res))
 
-// Flip many coins POST endpoint
-coinRouter.post('/app/flip/coins/', flips);
+coinRouter.post('/app/flip/coins/', coinsMiddleware.flips(req, res));
 
-// Guess flip GET endpoint
-coinRouter.get('/app/flip/call/:guess(heads|tails)/', guessGet)
+coinRouter.get('/app/flip/call/:guess(heads|tails)/', coinsMiddleware.guessGet(req, res))
 
-// Guess flip POST endpoint
-coinRouter.post('/app/flip/call/', guess);
+coinRouter.post('/app/flip/call/', coinsMiddleware.guess(req, res));
 
-modules.export = coinRouter
+modules.export = coinsRoute

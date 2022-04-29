@@ -1,5 +1,4 @@
-import minimist from 'minimist';
-const args = minimist(process.argv.slice(2));
+const args = require('minimist')(process.argv.slice(2));
 
 args['port'];
 args['help'];
@@ -21,12 +20,12 @@ if(args.help||args.h){
     process.exit(0);
 }
 
-import express from 'express';
-import morgan from 'morgan';
-import fs from 'fs'
-import coinsRoute from './src/routes/coinsRoute.js'
-import debuggingRoute from './src/routes/debuggingRoute.js'
-import { log } from './src/middleware/logging.js'
+const express = require('express')
+const morgan = require('morgan')
+const fs = require('fs')
+const coinsRoute = require('./src/routes/coinsRoute.js')
+const debuggingRoute = require('./src/routes/debuggingRoute.js')
+const logging = require('./src/middleware/logging.js')
 
 let app = express()
 
@@ -43,7 +42,7 @@ const server = app.listen(port, () => {
 if (args.log == true) {
     const accesslog = fs.createWriteStream('./data/log/access.log', { flags: 'a' });
     app.use(morgan('combined', { stream: accesslog }));
-    app.use(log)
+    app.use(logging.log(req, res, next))
 }
 
 if (args.debug) {

@@ -1,10 +1,11 @@
 // Router for debugging
-import express from 'express'
-import { log, error} from '../middleware/debugMiddleware.js'
-const debugRouter = express.Router()
+const express = require('express')
+const debuggingMiddleware = require('../middleware/debugMiddleware.js')
 
-debugRouter.get("/app/log/access", log)
+const debuggingRoute = express.Router()
 
-debugRouter.get("/app/error", error);
+debugRouter.get("/app/log/access", debuggingMiddleware.log(req, res))
 
-modules.export = debugRouter
+debugRouter.get("/app/error", debuggingMiddleware.error(req, res));
+
+modules.export = debuggingRoute
